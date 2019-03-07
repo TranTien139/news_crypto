@@ -2,10 +2,14 @@ docker run --rm -v $(pwd):/app composer install
 
 docker-compose up -d
 
+cp .env.example .env
+
 docker-compose exec app php artisan key:generate
 
-docker-compose exec app php artisan cache:clear
+docker-compose exec app php artisan config:clear
 
-docker-compose exec app php artisan migrate --seed
+docker-compose exec app php artisan config:cache
 
-run: localhost:4010
+docker-compose exec app php artisan migrate
+
+run: localhost:4015
