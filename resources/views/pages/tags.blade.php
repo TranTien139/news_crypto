@@ -2,9 +2,9 @@
 
 @section('title')
     <?php if($type == 'tag'){ ?>
-     {{ request()->segment(2) }}
+    {{ request()->segment(2) }}
     <?php }else{ ?>
-     {{ 'Kết quả tìm kiếm : ' . request()->get('keyword') }}
+    {{ 'Kết quả tìm kiếm : ' . request()->get('keyword') }}
     <?php } ?>
 @endsection
 
@@ -12,9 +12,9 @@
     <section>
         <div class="container" id="main_content">
             <?php if($type == 'tag'){ ?>
-            <h3>Chuyện mục: <?php echo request()->segment(2);?> //</h3>
+            <div class="row"><h3 class="title_tag">Thẻ tag: <?php echo request()->segment(2);?></h3></div>
             <?php }else{ ?>
-            <h3>Kết quả tìm kiếm từ khóa: {{ request()->get('keyword') }} //</h3>
+            <div class="row"><h3 class="title_tag">Kết quả tìm kiếm từ khóa: {{ request()->get('keyword') }}</h3></div>
             <?php } ?>
             @foreach($result as $item)
                 <div class="row level1_content">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-sm-9">
                         <h3 class="title"><a href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a></h3>
-                        <p class="description">{{ $item->description }}</p>
+                        {{--<p class="description">{{ $item->description }}</p>--}}
                         <p class="date">{{ NiceTime($item->published_at) }}</p>
                         <p class="link_detail"><a href="{{ route('detail', $item->slug) }}">Xem thêm</a></p>
                     </div>

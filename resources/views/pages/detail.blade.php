@@ -15,7 +15,7 @@
                     <!--</div>-->
                     <div class="info_detail">
                         <h1 class="title">{{ $detail->title }}</h1>
-                        <p class="date_published">//&nbsp;{{ NiceTime($detail->published_at) }}</p>
+                        <p class="date_published">Xuất bản: {{ NiceTime($detail->published_at) }}</p>
                         <p class="description">{{ $detail->description }}</p>
                     </div>
                     <div class="content_detail">

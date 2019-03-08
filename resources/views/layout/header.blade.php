@@ -5,6 +5,7 @@
     <title>@yield('title')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700|Roboto+Condensed:400,700" rel="stylesheet">
     <link rel="stylesheet" href="{{  asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

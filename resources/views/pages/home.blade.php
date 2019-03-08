@@ -11,20 +11,40 @@
                 $stt = 0;
             @endphp
             @foreach($article as $item)
-                <?php if($stt == 0 &&  !request()->get('page')){ ?>
-                <div class="row top_content">
-                    <div class="col-sm-8">
-                        <h2 class="title"><a href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a></h2>
-                        <p class="description">{{ $item->description }}</p>
-                        <p class="date">//&nbsp;{{ NiceTime($item->published_at) }}</p>
-                        <p class="link_detail"><a href="{{ route('detail', $item->slug) }}">Xem thêm</a></p>
-                    </div>
-                    <div class="col-sm-4">
-                        <a href="{{ route('detail', $item->slug) }}"><img src="{{ $item->thumbnail }}"
-                                                                          class="img-responsive" alt="no img"></a>
-                    </div>
-                </div>
-                <?php }else{ ?>
+                @if($stt <3 && !request()->get('page'))
+                    @if($stt == 0)
+                        <div class="row top_content">
+                            @endif
+                            @if($stt == 0)
+                                <div class="col-sm-8">
+                                    <div class="content-top-left">
+                                        <img src="{{ $item->thumbnail }}" class="img-responsive" alt="no img">
+                                        <div class="child-top-left">
+                                            <h2 class="title"><a
+                                                        href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
+                                            </h2>
+                                            <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    @endif
+                                    @if($stt != 0)
+                                        <div class="content-top-right">
+                                            <img src="{{ $item->thumbnail }}" class="img-responsive" alt="no img">
+                                            <div class="child-top-right">
+                                                <h3 class="title"><a
+                                                            href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
+                                                </h3>
+                                                <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($stt == 2)
+                                </div>
+                        </div>
+                    @endif
+                @else
                     <div class="list_content_home">
                         <div class="row level1_content">
                             <div class="col-sm-3">
@@ -35,13 +55,13 @@
                             <div class="col-sm-9">
                                 <h3 class="title"><a href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
                                 </h3>
-                                <p class="description">{{ $item->description }}</p>
-                                <p class="date">//&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                {{--<p class="description">{{ $item->description }}</p>--}}
+                                <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
                                 <p class="link_detail"><a href="{{ route('detail', $item->slug) }}">Xem thêm</a></p>
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                @endif
                 @php
                     $stt += 1;
                 @endphp
@@ -68,10 +88,10 @@
                     var domain = '{{ route('home') }}' + '?page=' + page;
 
                     $('#list_content_home_wrap').append($('<div>').load(domain + ' .list_content_home', function () {
-                        if($(this).html()) {
+                        if ($(this).html()) {
                             $('#loading').hide();
                             isloading = true;
-                        }else{
+                        } else {
                             $('#loading').hide();
                         }
                     }));
