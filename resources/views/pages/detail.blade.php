@@ -10,9 +10,6 @@
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10">
-                    <!--<div class="img_detail">-->
-                    <!--<img src="images/network_0.png" class="img-responsive" alt="no img">-->
-                    <!--</div>-->
                     <div class="info_detail">
                         <h1 class="title">{{ $detail->title }}</h1>
                         <p class="date_published">Xuất bản: {{ NiceTime($detail->published_at) }}</p>
@@ -34,7 +31,7 @@
                         </ul>
                     </div>
                     <div class="related_detail">
-                        <h4>Tin liên quan //</h4>
+                        <h4>Tin liên quan</h4>
                         <div class="row">
                             @foreach($related as $relate)
                                 <div class="col-sm-6">

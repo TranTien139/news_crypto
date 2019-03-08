@@ -17,28 +17,32 @@
                             @endif
                             @if($stt == 0)
                                 <div class="col-sm-8">
-                                    <div class="content-top-left">
-                                        <img src="{{ $item->thumbnail }}" class="img-responsive" alt="no img">
-                                        <div class="child-top-left">
-                                            <h2 class="title"><a
-                                                        href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
-                                            </h2>
-                                            <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                    <a href="{{ route('detail', $item->slug) }}">
+                                        <div class="content-top-left">
+                                            <img src="{{ $item->thumbnail }}" class="img-responsive" alt="no img">
+                                            <div class="child-top-left">
+                                                <h2 class="title"><a
+                                                            href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
+                                                </h2>
+                                                <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-sm-4">
                                     @endif
                                     @if($stt != 0)
-                                        <div class="content-top-right">
-                                            <img src="{{ $item->thumbnail }}" class="img-responsive" alt="no img">
-                                            <div class="child-top-right">
-                                                <h3 class="title"><a
-                                                            href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
-                                                </h3>
-                                                <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                        <a href="{{ route('detail', $item->slug) }}">
+                                            <div class="content-top-right">
+                                                <img src="{{ $item->thumbnail }}" class="img-responsive" alt="no img">
+                                                <div class="child-top-right">
+                                                    <h3 class="title"><a
+                                                                href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a>
+                                                    </h3>
+                                                    <p class="date">&nbsp;{{ NiceTime($item->published_at) }}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     @endif
                                     @if($stt == 2)
                                 </div>
