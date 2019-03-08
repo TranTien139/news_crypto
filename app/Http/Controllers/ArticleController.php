@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
     public function getHomePage(){
         $page = \request()->get('page') ?? 1;
-        $article = Article::select('id','title', 'description', 'thumbnail', 'slug')->where('status', 1)->orderBy('published_at', 'DESC')->take(10)->skip(($page-1)*10)->get();
+        $article = Article::select('id','title', 'description', 'thumbnail', 'slug', 'published_at')->where('status', 1)->orderBy('published_at', 'DESC')->take(10)->skip(($page-1)*10)->get();
         return view('pages.home',compact('article', 'total'));
     }
 
@@ -26,9 +26,6 @@ class ArticleController extends Controller
                 $related = Article::inRandomOrder()->where('status', 1)->where('source', $detail->source)->where('id', '!=',$detail->id)->take(6)->skip(0)->get();
             }
             $tags = [];
-            if($detail->source){
-                $tags = [$detail->source];
-            }
             $taged = DB::table('article_categories')->leftJoin('categories', 'article_categories.cate', '=', 'categories.id')->where('article_categories.post', $detail->id)->pluck('categories.name')->toArray();
 
             if (count($taged)>0){

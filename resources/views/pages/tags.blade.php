@@ -25,6 +25,7 @@
                     <div class="col-sm-9">
                         <h3 class="title"><a href="{{ route('detail', $item->slug) }}">{{ $item->title }}</a></h3>
                         <p class="description">{{ $item->description }}</p>
+                        <p class="date">{{ NiceTime($item->published_at) }}</p>
                         <p class="link_detail"><a href="{{ route('detail', $item->slug) }}">Xem thêm</a></p>
                     </div>
                 </div>

@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @yield('css')
+
+    <!-- Google Analytics -->
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <script>
+        window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+        };
+        ga.l = +new Date;
+        ga('create', 'UA-135771842-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
 </head>
 <body>
 
@@ -21,7 +34,8 @@
             <div class="col-sm-6">
                 <form method="get" action="{{ route('search') }}">
                     <div class="md-form active-cyan mb-3">
-                        <input class="form-control" name="keyword" required type="text" placeholder="Tìm kiếm" aria-label="Search">
+                        <input class="form-control" name="keyword" required type="text" placeholder="Tìm kiếm"
+                               aria-label="Search">
                     </div>
                 </form>
             </div>
